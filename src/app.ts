@@ -5,7 +5,7 @@ import { connect } from 'mongoose';
 
 import config from './config';
 import { Routes } from './interfaces/routes.interface';
-import errorMiddleware from './lib/middlewares/error.middleware';
+import { errorMiddleware, rateLimitMiddleware } from './lib/middlewares';
 
 const { port, mongoConnectionUrl } = config;
 
@@ -47,6 +47,8 @@ class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(rateLimitMiddleware);
+
     this.app.use(helmet());
     this.app.use(
       cors({ origin: process.env.ALLOWED_ORIGINS?.split(',') || '*', credentials: true })
