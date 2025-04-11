@@ -1,4 +1,6 @@
+import cors from 'cors';
 import express from 'express';
+import helmet from 'helmet';
 import { connect } from 'mongoose';
 
 import config from './config';
@@ -45,6 +47,11 @@ class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(helmet());
+    this.app.use(
+      cors({ origin: process.env.ALLOWED_ORIGINS?.split(',') || '*', credentials: true })
+    );
+
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   }
