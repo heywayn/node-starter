@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import UsersController from '@/conrollers/users.controllers';
+import UsersController from '@/controllers/users.controllers';
 import { Routes } from '@/interfaces/routes.interface';
 
 class UsersRoute implements Routes {
