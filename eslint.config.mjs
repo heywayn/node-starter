@@ -10,14 +10,15 @@ export default defineConfig([
   eslint.configs.recommended,
   tseslint.configs.recommended,
   {
-    files: ['**/*.{js,mjs,cjs,ts}'],
+    files: ['**/*.ts'],
     plugins: {
       ['prettier']: prettierPlugin,
       ['simple-import-sort']: simpleImportSort
     },
-    ignores: ['**/node_modules/**', '**/dist/**'],
+    ignores: ['**/node_modules/**', '**/dist/**', '**/coverage/**'],
     languageOptions: {
       sourceType: 'module',
+      ecmaVersion: 'latest',
       globals: { ...globals.node }
     },
     rules: {
