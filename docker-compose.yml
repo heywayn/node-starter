@@ -11,8 +11,8 @@ services:
     volumes:
       - .:/app
     environment:
-      - PORT=3001
-      - MONGODB=mongodb://mongodb:27017/node-starter
+      - PORT=${PORT}
+      - MONGODB=${MONGODB}
     depends_on:
       mongodb:
         condition: service_healthy
