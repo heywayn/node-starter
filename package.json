@@ -9,7 +9,9 @@
     "lint": "eslint . --fix",
     "prettier": "prettier . --write",
     "tsc": "tsc --noEmit --watch",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deps:check": "pnpm dlx npm-check-updates --format group",
+    "deps:update": "pnpm dlx npm-check-updates -u && pnpm install"
   },
   "lint-staged": {
     "*.(ts)": [
